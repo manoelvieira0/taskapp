@@ -4,7 +4,7 @@ import { styles } from "./styles";
 
 export function Home() {
 
-    function handleParticipantAdd(){
+    function handleParticipantAdd() {
         console.log("Você clicou no botão adicionar")
     }
 
@@ -17,16 +17,17 @@ export function Home() {
             <Text style={styles.eventDate}>
                 Sexta, 4 de novembro de 2023
             </Text>
+            <View style={styles.form}>
+                <TextInput
+                    style={styles.input}
+                    placeholder="Nome do participante"
+                    placeholderTextColor="#6b6b6b"
+                />
 
-            <TextInput 
-            style={styles.input}
-            placeholder="Nome do participante"
-            placeholderTextColor="#6b6b6b"
-            />
-
-            <TouchableOpacity style={styles.button} onPress={handleParticipantAdd}>
-                <Text style={styles.buttonText}>+</Text>
-            </TouchableOpacity>
+                <TouchableOpacity style={styles.button} onPress={handleParticipantAdd}>
+                    <Text style={styles.buttonText}>+</Text>
+                </TouchableOpacity>
+            </View>
         </View>
     );
 }

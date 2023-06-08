@@ -6,14 +6,16 @@ import { Participant } from "../../components/Participant";
 import { styles } from "./styles";
 
 export function Home() {
-    const [participants, setParticipants] = useState(["Mel Souza"]);
+    const [participants, setParticipants] = useState<string[]>([]);
+    const [participantName, setParticipantName] = useState('');
 
     function handleParticipantAdd() {
-        if (participants.includes("Manoel Vieira")) {
+        if (participants.includes(participantName)) {
             return Alert.alert("Participante existe", "Já existe um participante na lista com esse nome!")
         }
 
-        setParticipants(prevState => [...prevState, 'Manoel'])
+        setParticipants(prevState => [...prevState, participantName])
+        setParticipantName('');
     }
 
     function handleParticipantRemove(name: string) {
@@ -32,7 +34,7 @@ export function Home() {
     return (
         <View style={styles.container}>
             <Text style={styles.eventName}>
-                Nome do evento
+                Palestra de React Native
             </Text>
 
             <Text style={styles.eventDate}>
@@ -43,6 +45,8 @@ export function Home() {
                     style={styles.input}
                     placeholder="Nome do participante"
                     placeholderTextColor="#6b6b6b"
+                    onChangeText={setParticipantName}
+                    value={participantName}
                 />
 
                 <TouchableOpacity style={styles.button} onPress={handleParticipantAdd}>
